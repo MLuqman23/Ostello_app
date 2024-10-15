@@ -19,25 +19,26 @@ class ReusableTextFormField extends StatelessWidget {
   final int? maxLength;
   final Widget? suffix;
   final EdgeInsetsGeometry? contentPadding;
+  final FocusNode? focusNode;
 
-  const ReusableTextFormField({
-    super.key,
-    this.labelText,
-    this.hintText,
-    required this.controller,
-    this.obscureText = false,
-    this.keyboardType = TextInputType.text,
-    this.validator,
-    this.onChanged,
-    this.hintTextColor = Colors.black,
-    this.border,
-    this.floatingLabelBehavior,
-    this.labelTextColor,
-    this.ontap,
-    this.maxLength,
-    this.suffix,
-    this.contentPadding,
-  });
+  const ReusableTextFormField(
+      {super.key,
+      this.labelText,
+      this.hintText,
+      required this.controller,
+      this.obscureText = false,
+      this.keyboardType = TextInputType.text,
+      this.validator,
+      this.onChanged,
+      this.hintTextColor = Colors.black,
+      this.border,
+      this.floatingLabelBehavior,
+      this.labelTextColor,
+      this.ontap,
+      this.maxLength,
+      this.suffix,
+      this.contentPadding,
+      this.focusNode});
 
   @override
   Widget build(BuildContext context) {

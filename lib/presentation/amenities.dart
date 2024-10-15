@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ostello/assets_image/image.dart';
 import 'package:ostello/common/plaintext.dart';
-import 'package:ostello/data/video_provider.dart';
+import 'package:ostello/provider/video_provider.dart';
 import 'package:ostello/services/video_services.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -22,8 +24,8 @@ class AmenitiesPage extends ConsumerWidget {
                   width: double.infinity,
                   child: VideoPlayerWidget(videoUrl: video.url)),
               Positioned(
-                bottom: 60,
-                right: 20,
+                bottom: 60.h,
+                right: 20.w,
                 child: Column(
                   children: [
                     IconButton(
@@ -37,31 +39,31 @@ class AmenitiesPage extends ConsumerWidget {
                     ),
                     PlainText(
                       name: '100K',
-                      fontsize: 12,
+                      fontsize: 12.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 32,
+                      height: 32.h,
                     ),
-                    Image.asset('assets/images/message-2.png'),
+                    Image.asset(AssetsImages.comment),
                     PlainText(
                       name: '10K',
-                      fontsize: 12,
+                      fontsize: 12.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(
-                      height: 32,
+                      height: 32.h,
                     ),
                     GestureDetector(
                         onTap: () {
                           Share.share('Check out this video: ${video.url}');
                         },
-                        child: Image.asset('assets/images/send-2.png')),
+                        child: Image.asset(AssetsImages.share)),
                     PlainText(
                       name: '10K',
-                      fontsize: 12,
+                      fontsize: 12.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
@@ -69,45 +71,45 @@ class AmenitiesPage extends ConsumerWidget {
                 ),
               ),
               Positioned(
-                  bottom: 100,
-                  left: 20,
+                  bottom: 100.h,
+                  left: 20.w,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Container(
-                            height: 30,
-                            width: 30,
+                            height: 30.h,
+                            width: 30.w,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle, color: Colors.white),
                           ),
                           SizedBox(
-                            width: 15,
+                            width: 15.w,
                           ),
                           PlainText(
                             name: 'Manoj Classes',
-                            fontsize: 18,
+                            fontsize: 18.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w800,
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 15.h,
                       ),
                       PlainText(
                         name: 'Do you want to Start your journey at ₹99 ',
-                        fontsize: 14,
+                        fontsize: 14.sp,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 5.h,
                       ),
                       PlainText(
                         name: 'This offer valid only 4classes per user',
-                        fontsize: 12,
+                        fontsize: 12.sp,
                         color: Color(0xffB2B2B2),
                         fontWeight: FontWeight.w500,
                       ),

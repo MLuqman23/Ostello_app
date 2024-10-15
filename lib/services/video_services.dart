@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ostello/data/provider.dart';
+import 'package:ostello/provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends ConsumerStatefulWidget {

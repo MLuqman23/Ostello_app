@@ -6,7 +6,7 @@ class VideoListNotifier extends StateNotifier<List<Video>> {
       : super([
           Video(
               url:
-                  'https://flutter.github.io/assets-for-api-docs/assets/videos/3692634-hd_1920_1080_30fps.mp4'),
+                  'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
           Video(
               url:
                   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),

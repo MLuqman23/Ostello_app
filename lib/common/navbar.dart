@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ostello/assets_image/image.dart';
 import 'package:ostello/common/plaintext.dart';
 import 'package:ostello/presentation/home.dart';
 
@@ -23,34 +25,34 @@ class AppNavigator extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Image.asset('assets/images/textalign-left.png'),
+        leading: Image.asset(AssetsImages.drawer),
         title: Container(
-            width: 115,
-            height: 35,
+            width: 115.w,
+            height: 35.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(color: Color(0xffE2C7FF), width: 0.5),
               color: Color(0xffFFFFFF),
             ),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 PlainText(
                   name: '12th IIT JEE',
-                  fontsize: 12,
+                  fontsize: 12.sp,
                   fontWeight: FontWeight.w800,
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
                   color: Color(0xff7D23E0),
-                  size: 12,
+                  size: 12.h,
                 )
               ],
             )),
         actions: [
           Container(
-              width: 80,
-              height: 35,
+              width: 80.w,
+              height: 35.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Color(0xffC7A5EB), width: 1),
@@ -59,10 +61,10 @@ class AppNavigator extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/images/coin.png'),
-                  const PlainText(
+                  Image.asset(AssetsImages.coin),
+                  PlainText(
                     name: '300',
-                    fontsize: 14,
+                    fontsize: 14.sp,
                     fontWeight: FontWeight.w800,
                   ),
                 ],
@@ -109,8 +111,8 @@ class AppNavigator extends ConsumerWidget {
                     width: 40,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Color(0xffF6EDFF)),
-                    child: Image.asset('assets/images/book.png'))
-                : Image.asset('assets/images/book.png'),
+                    child: Image.asset(AssetsImages.schedule))
+                : Image.asset(AssetsImages.schedule),
             label: 'Schedule',
           ),
           BottomNavigationBarItem(
@@ -120,8 +122,8 @@ class AppNavigator extends ConsumerWidget {
                     width: 40,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Color(0xffF6EDFF)),
-                    child: Image.asset('assets/images/calendar-2.png'))
-                : Image.asset('assets/images/calendar-2.png'),
+                    child: Image.asset(AssetsImages.content))
+                : Image.asset(AssetsImages.content),
             label: 'Content',
           ),
           BottomNavigationBarItem(
@@ -131,8 +133,8 @@ class AppNavigator extends ConsumerWidget {
                     width: 40,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Color(0xffF6EDFF)),
-                    child: Image.asset('assets/images/teacher.png'))
-                : Image.asset('assets/images/teacher.png'),
+                    child: Image.asset(AssetsImages.batches))
+                : Image.asset(AssetsImages.batches),
             label: 'Batches',
           ),
           BottomNavigationBarItem(
