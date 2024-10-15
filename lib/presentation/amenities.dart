@@ -8,6 +8,8 @@ import 'package:ostello/services/video_services.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AmenitiesPage extends ConsumerWidget {
+  const AmenitiesPage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final videoList = ref.watch(videoListProvider);
@@ -37,9 +39,9 @@ class AmenitiesPage extends ConsumerWidget {
                         ref.read(videoListProvider.notifier).toggleLike(index);
                       },
                     ),
-                    PlainText(
-                      name: '100K',
-                      fontsize: 12.sp,
+                    const CustomText(
+                      text: '100K',
+                      fontSize: 12,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
@@ -47,9 +49,9 @@ class AmenitiesPage extends ConsumerWidget {
                       height: 32.h,
                     ),
                     Image.asset(AssetsImages.comment),
-                    PlainText(
-                      name: '10K',
-                      fontsize: 12.sp,
+                    const CustomText(
+                      text: '10K',
+                      fontSize: 12,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
@@ -61,9 +63,9 @@ class AmenitiesPage extends ConsumerWidget {
                           Share.share('Check out this video: ${video.url}');
                         },
                         child: Image.asset(AssetsImages.share)),
-                    PlainText(
-                      name: '10K',
-                      fontsize: 12.sp,
+                    const CustomText(
+                      text: '10K',
+                      fontSize: 12,
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
@@ -81,38 +83,38 @@ class AmenitiesPage extends ConsumerWidget {
                           Container(
                             height: 30.h,
                             width: 30.w,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.circle, color: Colors.white),
                           ),
                           SizedBox(
                             width: 15.w,
                           ),
-                          PlainText(
-                            name: 'Manoj Classes',
-                            fontsize: 18.sp,
+                          const CustomText(
+                            text: 'Manoj Classes',
+                            fontSize: 18,
                             color: Colors.white,
                             fontWeight: FontWeight.w800,
-                          ),
+                          )
                         ],
                       ),
                       SizedBox(
                         height: 15.h,
                       ),
-                      PlainText(
-                        name: 'Do you want to Start your journey at ₹99 ',
-                        fontsize: 14.sp,
+                      const CustomText(
+                        text: 'Do you want to Start your journey at ₹99 ',
+                        fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
-                      PlainText(
-                        name: 'This offer valid only 4classes per user',
-                        fontsize: 12.sp,
+                      const CustomText(
+                        text: 'This offer valid only 4classes per user',
+                        fontSize: 12,
                         color: Color(0xffB2B2B2),
                         fontWeight: FontWeight.w500,
-                      ),
+                      )
                     ],
                   )),
             ],

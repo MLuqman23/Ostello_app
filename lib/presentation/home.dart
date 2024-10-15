@@ -12,15 +12,15 @@ import 'package:ostello/provider/navigation_provide.dart';
 import 'package:ostello/provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class homePage extends ConsumerWidget {
-  const homePage({super.key});
+class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController searchContoller = TextEditingController();
     final selectedFilter = ref.watch(selectedFilterProvider);
     final PageController pageController = PageController();
-
+    final selectedCourse = ref.watch(courseSelectionProvider);
     pageController.addListener(() {
       ref.read(currentPageProvider.notifier).state =
           pageController.page?.round() ?? 0;
@@ -64,14 +64,13 @@ class homePage extends ConsumerWidget {
                             decoration: BoxDecoration(
                                 color: const Color(0xff7D23E0),
                                 borderRadius: BorderRadius.circular(15.sp)),
-                            child: Center(
-                              child: PlainText(
-                                name: 'Study',
-                                fontsize: 16.sp,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
-                              ),
-                            ),
+                            child: const Center(
+                                child: CustomText(
+                              text: 'Study',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            )),
                           )
                         ],
                       ),
@@ -103,8 +102,7 @@ class homePage extends ConsumerWidget {
                                       bottom: 0,
                                       right: 7.w),
                                   decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(20.sp),
+                                      borderRadius: BorderRadius.circular(20),
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
@@ -123,10 +121,10 @@ class homePage extends ConsumerWidget {
                                       SizedBox(
                                         height: 5.h,
                                       ),
-                                      PlainText(
-                                        name: '${item["text"]}',
-                                        fontsize: 14.sp,
-                                        fontWeight: FontWeight.w800,
+                                      CustomText(
+                                        text: '${item["text"]}',
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
                                         color: const Color(0xff4C4452),
                                       )
                                     ],
@@ -136,7 +134,7 @@ class homePage extends ConsumerWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 20.h,
+                        height: 25.h,
                       ),
                       SizedBox(
                         height: 130.h,
@@ -153,11 +151,11 @@ class homePage extends ConsumerWidget {
                                     height: 140.h,
                                     child: Image.asset(AssetsImages.card)),
                                 Positioned(
-                                  right: 15.w,
+                                  right: 22.w,
                                   top: 20.h,
                                   child: SizedBox(
-                                    height: 85.h,
-                                    width: 85.w,
+                                    height: 80.h,
+                                    width: 80.w,
                                     child: Image.asset(
                                       AssetsImages.cardImage,
                                     ),
@@ -165,35 +163,35 @@ class homePage extends ConsumerWidget {
                                 ),
                                 Positioned(
                                     top: 25.h,
-                                    left: 25.w,
-                                    child: Column(
+                                    left: 30.w,
+                                    child: const Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        PlainText(
-                                          name: 'Study with',
-                                          fontsize: 16.sp,
+                                        CustomText(
+                                          text: 'Study with',
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff2A2E3B),
                                         ),
                                         SizedBox(
-                                          height: 2.h,
+                                          height: 2,
                                         ),
-                                        PlainText(
-                                          name: 'India’s best Coaching Centres',
-                                          fontsize: 18.sp,
+                                        CustomText(
+                                          text: 'India’s best Coaching Centres',
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff2A2E3B),
                                         ),
                                         SizedBox(
-                                          height: 2.h,
+                                          height: 2,
                                         ),
-                                        PlainText(
-                                          name: 'Anytime, Anywhere!',
-                                          fontsize: 16.sp,
+                                        CustomText(
+                                          text: 'Anytime, Anywhere!',
+                                          fontSize: 15,
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff2A2E3B),
-                                        ),
+                                        )
                                       ],
                                     ))
                               ],
@@ -224,9 +222,9 @@ class homePage extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      PlainText(
-                        name: 'Recommended for you',
-                        fontsize: 16.sp,
+                      const CustomText(
+                        text: 'Recommended for you',
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: Color(0xff272A34),
                       ),
@@ -270,33 +268,32 @@ class homePage extends ConsumerWidget {
                                                   size: 12.sp,
                                                   color: Colors.white,
                                                 ),
-                                                PlainText(
-                                                  name: '2.5M',
-                                                  fontsize: 8.sp,
+                                                const CustomText(
+                                                  text: '2.5M',
+                                                  fontSize: 8,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.white,
-                                                ),
+                                                )
                                               ],
                                             )),
                                         Positioned(
                                             bottom: 6.h.w,
                                             left: 5.w,
-                                            child: Column(
+                                            child: const Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                PlainText(
-                                                  name: 'Manoj Classes',
-                                                  fontsize: 11.sp,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white,
-                                                ),
-                                                PlainText(
-                                                  name: 'Maths - 10th',
-                                                  fontsize: 9.sp,
+                                                CustomText(
+                                                    text: 'Manoj Classes',
+                                                    fontSize: 11,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: Colors.white),
+                                                CustomText(
+                                                  text: 'Maths - 10th',
+                                                  fontSize: 9,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white,
-                                                ),
+                                                )
                                               ],
                                             )),
                                       ],
@@ -320,10 +317,10 @@ class homePage extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      PlainText(
-                        name:
-                            'Find the best Coach to help you\nwith your 10th Class',
-                        fontsize: 23.sp,
+                      const CustomText(
+                        text:
+                            'Find the best Coach to help you with your 10th Class ',
+                        fontSize: 23,
                         fontWeight: FontWeight.w600,
                         color: Color(0xff696969),
                       ),
@@ -334,12 +331,12 @@ class homePage extends ConsumerWidget {
                         height: 37.h,
                         // width: 500,
                         child: ListView.builder(
-                            itemCount: constList.list3.length,
+                            itemCount: ConstList.list3.length,
                             shrinkWrap: true,
                             padding: const EdgeInsets.all(0),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              var item = constList.list3[index];
+                              var item = ConstList.list3[index];
                               return Row(
                                 children: [
                                   if (index == 0) ...[
@@ -357,12 +354,12 @@ class homePage extends ConsumerWidget {
                                         children: [
                                           SizedBox(
                                               height: 20.h,
-                                              width: 20.w,
+                                              width: 25.w,
                                               child: Image.asset(
                                                   AssetsImages.filter)),
-                                          PlainText(
-                                            name: 'Filters',
-                                            fontsize: 14.sp,
+                                          const CustomText(
+                                            text: 'Filters',
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           const Icon(
@@ -407,18 +404,16 @@ class homePage extends ConsumerWidget {
                                     width: 91.w,
                                     margin: EdgeInsets.only(left: 5.w),
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.sp),
+                                        borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
                                             color: const Color(0xffD8D8D8))),
                                     child: Center(
-                                      child: PlainText(
-                                        name: '${item["text"]}',
-                                        fontsize: 14.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xff484848),
-                                      ),
-                                    ),
+                                        child: CustomText(
+                                      text: '${item["text"]}',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xff484848),
+                                    )),
                                   ),
                                 ],
                               );
@@ -441,49 +436,86 @@ class homePage extends ConsumerWidget {
                       Container(
                         height: 51.h,
                         width: double.infinity,
-                        padding: EdgeInsets.only(right: 30.w),
+                        padding: const EdgeInsets.only(right: 0),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30.sp),
-                            color: const Color(0xffF3F4F8)),
+                          borderRadius: BorderRadius.circular(30.sp),
+                          color: const Color(0xffF3F4F8),
+                        ),
                         child: Stack(
                           children: [
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: PlainText(
-                                name: 'Paid Courses',
-                                fontsize: 16.sp,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff737A87),
+                            Positioned(
+                              right: 0,
+                              top: 3,
+                              child: GestureDetector(
+                                onTap: () {
+                                  ref
+                                      .read(courseSelectionProvider.notifier)
+                                      .selectCourse(CourseType.paid);
+                                },
+                                child: Container(
+                                  height: 45.h,
+                                  width: 160.w,
+                                  decoration: BoxDecoration(
+                                    color: selectedCourse == CourseType.paid
+                                        ? const Color(0xff1C1C1C)
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 16.w, vertical: 10.h),
+                                  child: Center(
+                                    child: CustomText(
+                                      text: 'Paid Courses',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: selectedCourse == CourseType.paid
+                                          ? Colors.white
+                                          : const Color(0xff737A87),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                             Positioned(
-                                top: 3.h,
-                                left: 6.w,
+                              top: 3.h,
+                              left: 6.w,
+                              child: GestureDetector(
+                                onTap: () {
+                                  ref
+                                      .read(courseSelectionProvider.notifier)
+                                      .selectCourse(CourseType.free);
+                                },
                                 child: Container(
                                   height: 45.h,
-                                  width: 170.w,
+                                  width: 160.w,
                                   decoration: BoxDecoration(
-                                      color: const Color(0xff1C1C1C),
-                                      borderRadius:
-                                          BorderRadius.circular(30.sp)),
+                                    color: selectedCourse == CourseType.free
+                                        ? const Color(0xff1C1C1C)
+                                        : const Color(0xffF3F4F8),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
                                   child: Center(
-                                    child: PlainText(
-                                      name: 'Free Course',
-                                      fontsize: 16.sp,
+                                    child: CustomText(
+                                      text: 'Free Course',
+                                      fontSize: 15,
                                       fontWeight: FontWeight.w800,
-                                      color: Colors.white,
+                                      color: selectedCourse == CourseType.free
+                                          ? Colors.white
+                                          : const Color(0xff1C1C1C),
                                     ),
                                   ),
-                                ))
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
                       SizedBox(
                         height: 23.h,
                       ),
-                      PlainText(
-                        name: 'Ongoing Classes',
-                        fontsize: 16.sp,
+                      const CustomText(
+                        text: 'Ongoing Classes',
+                        fontSize: 16,
                         fontWeight: FontWeight.w800,
                         color: Color(0xff737A87),
                       ),
@@ -521,12 +553,11 @@ class homePage extends ConsumerWidget {
                                             size: 15.h,
                                           ),
                                           // Spacer(),
-                                          PlainText(
-                                            name: 'LIVE',
-                                            fontsize: 14.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          )
+                                          const CustomText(
+                                              text: 'LIVE',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white)
                                         ],
                                       ),
                                     )),
@@ -540,10 +571,10 @@ class homePage extends ConsumerWidget {
                                           borderRadius:
                                               BorderRadius.circular(4.sp),
                                           color: const Color(0xff000000)),
-                                      child: Center(
-                                        child: PlainText(
-                                          name: '47:08',
-                                          fontsize: 14.sp,
+                                      child: const Center(
+                                        child: CustomText(
+                                          text: '47:08',
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white,
                                         ),
@@ -573,9 +604,9 @@ class homePage extends ConsumerWidget {
                                       SizedBox(
                                         height: 10.h,
                                       ),
-                                      PlainText(
-                                        name: 'Physics - 10th Class',
-                                        fontsize: 18.sp,
+                                      const CustomText(
+                                        text: 'Physics - 10th Class',
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w800,
                                         color: Color(0xff2E2E2E),
                                       ),
@@ -584,18 +615,18 @@ class homePage extends ConsumerWidget {
                                       ),
                                       Row(
                                         children: [
-                                          PlainText(
-                                            name: 'Faculty Name',
-                                            fontsize: 14.sp,
+                                          CustomText(
+                                            text: 'Faculty Name',
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w800,
-                                            color: Color(0xff4F4F4F),
+                                            color: const Color(0xff4F4F4F),
                                           ),
                                           SizedBox(
                                             width: 5.w,
                                           ),
                                           Icon(
                                             Icons.check_circle,
-                                            color: Color(0xff878487),
+                                            color: const Color(0xff878487),
                                             size: 15.h,
                                           )
                                         ],
@@ -605,9 +636,9 @@ class homePage extends ConsumerWidget {
                                       ),
                                       Row(
                                         children: [
-                                          PlainText(
-                                            name: '476K views',
-                                            fontsize: 12.sp,
+                                          const CustomText(
+                                            text: '476K views',
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w800,
                                             color: Color(0xff7C7C7C),
                                           ),
@@ -616,15 +647,15 @@ class homePage extends ConsumerWidget {
                                           ),
                                           Icon(
                                             Icons.circle,
-                                            color: Color(0xff878487),
+                                            color: const Color(0xff878487),
                                             size: 7.h,
                                           ),
                                           SizedBox(
                                             width: 5.w,
                                           ),
-                                          PlainText(
-                                            name: '3 days ago',
-                                            fontsize: 12.sp,
+                                          const CustomText(
+                                            text: '3 days ago',
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w800,
                                             color: Color(0xff7C7C7C),
                                           ),
@@ -660,60 +691,60 @@ class homePage extends ConsumerWidget {
                                 // width: 115,
                                 child: Image.asset(AssetsImages.classes)),
                             Padding(
-                              padding: EdgeInsets.only(left: 15.w, top: 12.h),
+                              padding: EdgeInsets.only(left: 15.w, top: 11.h),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     children: [
-                                      PlainText(
-                                        name: 'Physics - 10th\nClass',
-                                        fontsize: 16.sp,
-                                        fontWeight: FontWeight.w800,
-                                        color: Color(0xff2E2E2E),
+                                      SizedBox(
+                                        width: 130.w,
+                                        // color: Colors.amber,
+                                        child: const CustomText(
+                                          text: 'Physics - 10th Class',
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w800,
+                                          color: Color(0xff2E2E2E),
+                                        ),
                                       ),
                                       // Spacer(),
                                       SizedBox(
                                         width: 10.w,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(bottom: 25.h),
+                                        padding: EdgeInsets.only(bottom: 20.h),
                                         child: Image.asset(AssetsImages.more),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
                                   Row(
                                     children: [
-                                      PlainText(
-                                        name: '476K views',
-                                        fontsize: 11.sp,
-                                        fontWeight: FontWeight.w800,
-                                        color: Color(0xff7C7C7C),
-                                      ),
+                                      const CustomText(
+                                          text: '476K views',
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w800,
+                                          color: Color(0xff7C7C7C)),
                                       SizedBox(
                                         width: 10.w,
                                       ),
                                       Icon(
                                         Icons.circle,
-                                        color: Color(0xff878487),
+                                        color: const Color(0xff878487),
                                         size: 5.h,
                                       ),
                                       SizedBox(
                                         width: 4.w,
                                       ),
-                                      PlainText(
-                                        name: '3 days ago',
-                                        fontsize: 11.sp,
+                                      const CustomText(
+                                        text: '3 days ago',
+                                        fontSize: 10,
                                         fontWeight: FontWeight.w800,
                                         color: Color(0xff7C7C7C),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 4.h,
+                                  const SizedBox(
+                                    height: 2,
                                   ),
                                   Row(
                                     children: [
@@ -728,12 +759,12 @@ class homePage extends ConsumerWidget {
                                       SizedBox(
                                         width: 7.w,
                                       ),
-                                      PlainText(
-                                        name: 'Institute Name',
-                                        fontsize: 13.sp,
+                                      const CustomText(
+                                        text: 'Institute Name',
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w800,
                                         color: Color(0xff4F4F4F),
-                                      ),
+                                      )
                                     ],
                                   ),
                                 ],
@@ -752,14 +783,13 @@ class homePage extends ConsumerWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.sp),
                             color: const Color(0xffE7E8EC)),
-                        child: Center(
-                          child: PlainText(
-                            name: 'View More Classes',
-                            fontsize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff737A87),
-                          ),
-                        ),
+                        child: const Center(
+                            child: CustomText(
+                          text: 'View More Classes',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff737A87),
+                        )),
                       )
                     ],
                   ),

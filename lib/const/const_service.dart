@@ -1,4 +1,4 @@
-class constList {
+class ConstList {
   static List list1 = [
     {"image": "assets/images/image 154.png", "text": "Career Trends"},
     {"image": "assets/images/image 155.png", "text": "Assessment"},

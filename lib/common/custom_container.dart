@@ -10,7 +10,7 @@ class CustomContainer extends StatelessWidget {
   final AlignmentGeometry? alignment;
 
   const CustomContainer({
-    Key? key,
+    super.key,
     this.height,
     this.width,
     this.decoration,
@@ -18,14 +18,14 @@ class CustomContainer extends StatelessWidget {
     this.padding,
     this.margin,
     this.alignment,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
-      decoration: decoration ?? BoxDecoration(color: Colors.blue),
+      decoration: decoration ?? const BoxDecoration(color: Colors.blue),
       padding: padding,
       margin: margin,
       alignment: alignment,

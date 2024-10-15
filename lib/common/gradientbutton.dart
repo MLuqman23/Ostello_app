@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class gradientbutton extends StatelessWidget {
+class Gradientbutton extends StatelessWidget {
   final String txt;
   final TextAlign textAlign;
   final double fontsize;
@@ -9,7 +10,7 @@ class gradientbutton extends StatelessWidget {
   final Color? color;
   final IconData? iconData;
 
-  const gradientbutton(
+  const Gradientbutton(
       {super.key,
       required this.txt,
       required this.fontsize,
@@ -43,7 +44,7 @@ class gradientbutton extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
-            width: 8,
+            width: 8.h,
           ),
           Icon(
             iconData,

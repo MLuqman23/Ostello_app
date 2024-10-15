@@ -25,7 +25,7 @@ class MyApp extends ConsumerWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => const AppNavigator(),
-            '/amenities': (context) => AmenitiesPage(),
+            '/amenities': (context) => const AmenitiesPage(),
           },
         );
       },
