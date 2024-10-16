@@ -76,7 +76,7 @@ class AppNavigator extends ConsumerWidget {
       ),
       body: screens[currentIndex],
       bottomNavigationBar: SizedBox(
-        height: 75,
+        height: 90.h,
         child: BottomNavigationBar(
           selectedLabelStyle:
               const TextStyle(fontSize: 9, fontWeight: FontWeight.w700),

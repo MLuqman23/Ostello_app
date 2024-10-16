@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, unused_local_variable
+// ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello/assets_image/image.dart';
 import 'package:ostello/common/custom_container.dart';
 import 'package:ostello/common/plaintext.dart';
-import 'package:ostello/common/textformfield.dart';
 import 'package:ostello/const/const_service.dart';
 import 'package:ostello/provider/navigation_provide.dart';
 import 'package:ostello/provider/provider.dart';
@@ -17,23 +16,24 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final TextEditingController searchContoller = TextEditingController();
-    final selectedFilter = ref.watch(selectedFilterProvider);
     final PageController pageController = PageController();
     final selectedCourse = ref.watch(courseSelectionProvider);
     pageController.addListener(() {
       ref.read(currentPageProvider.notifier).state =
           pageController.page?.round() ?? 0;
     });
-    final focusNode = ref.watch(focusNodeProvider);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
+
+    final selectedIndex = ref.watch(selectedIndexProvider);
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 20.h),
             child: Column(
@@ -51,12 +51,27 @@ class HomePage extends ConsumerWidget {
                           SizedBox(
                               width: 225.w,
                               height: 48.h,
-                              child: ReusableTextFormField(
-                                  focusNode: focusNode,
-                                  controller: searchContoller,
-                                  hintText: 'Search here...',
-                                  // obscureText: true,
-                                  suffix: Image.asset(AssetsImages.search))),
+                              child: TextField(
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: const Color(0xffFCFCFC),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: const BorderSide(
+                                            color: Color(0xffF0E3FF))),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                        borderSide: const BorderSide(
+                                            color: Color(0xffF0E3FF))),
+                                    hintText: "Search here...",
+                                    hintStyle: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff878487)),
+                                    suffixIcon:
+                                        Image.asset(AssetsImages.search)),
+                              )),
                           const Spacer(),
                           CustomContainer(
                             height: 48.h,
@@ -137,34 +152,34 @@ class HomePage extends ConsumerWidget {
                         height: 25.h,
                       ),
                       SizedBox(
-                        height: 130.h,
+                        height: 125.h,
                         child: PageView.builder(
                           controller: pageController,
                           itemCount: 5,
-                          // shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Stack(
-                              children: [
-                                SizedBox(
-                                    width: 375.w,
-                                    height: 140.h,
-                                    child: Image.asset(AssetsImages.card)),
-                                Positioned(
-                                  right: 22.w,
-                                  top: 20.h,
-                                  child: SizedBox(
-                                    height: 80.h,
-                                    width: 80.w,
-                                    child: Image.asset(
-                                      AssetsImages.cardImage,
-                                    ),
-                                  ),
+                            return Container(
+                              margin: const EdgeInsets.only(right: 19),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Color(0xFFB2FF59),
+                                    Color.fromARGB(255, 248, 246, 246),
+                                    Color(0xFF00C853),
+                                  ],
                                 ),
-                                Positioned(
-                                    top: 25.h,
-                                    left: 30.w,
-                                    child: const Column(
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: 15.h, left: 20.w, right: 10.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
@@ -175,7 +190,7 @@ class HomePage extends ConsumerWidget {
                                           color: Color(0xff2A2E3B),
                                         ),
                                         SizedBox(
-                                          height: 2,
+                                          height: 4,
                                         ),
                                         CustomText(
                                           text: 'India’s best Coaching Centres',
@@ -184,7 +199,7 @@ class HomePage extends ConsumerWidget {
                                           color: Color(0xff2A2E3B),
                                         ),
                                         SizedBox(
-                                          height: 2,
+                                          height: 4,
                                         ),
                                         CustomText(
                                           text: 'Anytime, Anywhere!',
@@ -193,14 +208,23 @@ class HomePage extends ConsumerWidget {
                                           color: Color(0xff2A2E3B),
                                         )
                                       ],
-                                    ))
-                              ],
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 15),
+                                      child: Image.asset(
+                                        AssetsImages.cardImage,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             );
                           },
                         ),
                       ),
                       SizedBox(
-                        height: 8.h,
+                        height: 20.h,
                       ),
                       Center(
                           child: SmoothPageIndicator(
@@ -328,100 +352,99 @@ class HomePage extends ConsumerWidget {
                         height: 21.h,
                       ),
                       SizedBox(
-                        height: 37.h,
-                        // width: 500,
-                        child: ListView.builder(
-                            itemCount: ConstList.list3.length,
-                            shrinkWrap: true,
-                            padding: const EdgeInsets.all(0),
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              var item = ConstList.list3[index];
-                              return Row(
-                                children: [
-                                  if (index == 0) ...[
-                                    Container(
-                                      width: 129.w,
-                                      height: 36.h,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8.sp),
-                                          border: Border.all(
-                                              color: const Color(0xffD8D8D8))),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          SizedBox(
-                                              height: 20.h,
-                                              width: 25.w,
-                                              child: Image.asset(
-                                                  AssetsImages.filter)),
-                                          const CustomText(
-                                            text: 'Filters',
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                          const Icon(
-                                            Icons.arrow_drop_down,
-                                            color: Color(0xff7D23E0),
-                                          ),
-                                          // DropdownButton<String>(
-                                          //   alignment: Alignment.centerRight,
-                                          //   underline: Container(),
-                                          //   value: selectedFilter,
-                                          //   isDense: false,
-                                          //   iconSize: 20,
-                                          //   // dropdownColor: color,
-                                          //   items: filterOptions.map((String filter) {
-                                          //     return DropdownMenuItem<String>(
-                                          //       value: filter,
-                                          //       child: Text(
-                                          //         filter,
-                                          //         style: const TextStyle(
-                                          //             fontSize: 14, fontWeight: FontWeight.w600),
-                                          //       ),
-                                          //     );
-                                          //   }).toList(),
-                                          //   onChanged: (newValue) {
-                                          //     ref.read(selectedFilterProvider.notifier).state =
-                                          //         newValue!;
-                                          //   },
-                                          // ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 5.w,
-                                    ),
-                                    Container(
-                                      height: 30.h,
-                                      width: 1,
-                                      color: const Color(0xff818181),
-                                    ),
-                                  ],
-                                  Container(
-                                    width: 91.w,
-                                    margin: EdgeInsets.only(left: 5.w),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: const Color(0xffD8D8D8))),
-                                    child: Center(
-                                        child: CustomText(
-                                      text: '${item["text"]}',
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: const Color(0xff484848),
-                                    )),
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
-                      SizedBox(
                         height: 13.h,
                       ),
+                      SizedBox(
+                        height: 37.h,
+                        child: ListView.builder(
+                          itemCount: ConstList.list3.length,
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(0),
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var item = ConstList.list3[index];
+
+                            return Row(
+                              children: [
+                                if (index == 0) ...[
+                                  Container(
+                                    width: 129.w,
+                                    height: 36.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.sp),
+                                      border: Border.all(
+                                          color: const Color(0xffD8D8D8)),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          height: 20.h,
+                                          width: 25.w,
+                                          child:
+                                              Image.asset(AssetsImages.filter),
+                                        ),
+                                        const CustomText(
+                                          text: 'Filters',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Color(0xff7D23E0),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  Container(
+                                    height: 30.h,
+                                    width: 1,
+                                    color: const Color(0xff818181),
+                                  ),
+                                ],
+                                if (index >= 0) ...[
+                                  GestureDetector(
+                                    onTap: () {
+                                      ref
+                                          .read(selectedIndexProvider.notifier)
+                                          .state = index;
+                                    },
+                                    child: Container(
+                                      width: 91.w,
+                                      margin: EdgeInsets.only(left: 5.w),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                          color: const Color(0xffD8D8D8),
+                                        ),
+                                        color: selectedIndex == index
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                      ),
+                                      child: Center(
+                                        child: CustomText(
+                                          text: '${item["text"]}',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: selectedIndex == index
+                                              ? Colors
+                                                  .white // Selected text color
+                                              : const Color(
+                                                  0xff484848), // Unselected text color
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            );
+                          },
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -523,7 +546,7 @@ class HomePage extends ConsumerWidget {
                         height: 13.h,
                       ),
                       Container(
-                        height: 295,
+                        height: 310,
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
@@ -685,13 +708,14 @@ class HomePage extends ConsumerWidget {
                             color: Colors.white,
                             border: Border.all(color: const Color(0xffE6E6E6))),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                                height: 90.h,
+                                height: 100.h,
                                 // width: 115,
                                 child: Image.asset(AssetsImages.classes)),
                             Padding(
-                              padding: EdgeInsets.only(left: 15.w, top: 11.h),
+                              padding: EdgeInsets.only(left: 15.w, top: 15.h),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -707,12 +731,8 @@ class HomePage extends ConsumerWidget {
                                           color: Color(0xff2E2E2E),
                                         ),
                                       ),
-                                      // Spacer(),
-                                      SizedBox(
-                                        width: 10.w,
-                                      ),
                                       Padding(
-                                        padding: EdgeInsets.only(bottom: 20.h),
+                                        padding: EdgeInsets.only(bottom: 15.h),
                                         child: Image.asset(AssetsImages.more),
                                       ),
                                     ],

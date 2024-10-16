@@ -16,7 +16,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final navigationNotifier = ref.watch(navigationProvider.notifier);
     return ScreenUtilInit(
-      designSize: const Size(380, 890),
+      designSize: const Size(400, 890),
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
