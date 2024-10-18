@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:ostello/const/screen_size.dart';
 
 class Gradientbutton extends StatelessWidget {
   final String txt;
@@ -22,36 +21,25 @@ class Gradientbutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 48,
+      width: ResponsiveHelper.width(double.infinity),
+      height: ResponsiveHelper.height(49),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(100),
           gradient: const LinearGradient(colors: [
-            Color(0xff7837CB),
-            Color(0xff388DB1),
+            Color(0xff7D23E0),
+            Color(0xff490087),
           ])),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            txt,
-            textAlign: textAlign,
-            style: GoogleFonts.roboto(
-              fontSize: fontsize,
-              fontWeight: fontWeight,
-              color: color,
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-          SizedBox(
-            width: 8.h,
-          ),
-          Icon(
-            iconData,
+      child: Center(
+        child: Text(
+          txt,
+          textAlign: textAlign,
+          style: TextStyle(
+            fontSize: fontsize,
+            fontWeight: fontWeight,
             color: color,
-            size: 15,
-          )
-        ],
+          ),
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }

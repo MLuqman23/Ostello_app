@@ -6,8 +6,16 @@ class NavigationNotifier extends StateNotifier<void> {
 
   NavigationNotifier() : super(null);
 
-  void goToAmenitiesPage() {
-    navigatorKey.currentState?.pushNamed('/amenities');
+  void goToSignupWIthNumber() {
+    navigatorKey.currentState?.pushNamed('/SignupWithNumber');
+  }
+
+  void goToOTPScreen() {
+    navigatorKey.currentState?.pushNamed('/OtpScreen');
+  }
+
+  void goToLogin() {
+    navigatorKey.currentState?.pushNamed('/Login');
   }
 
   void goToAppNavigator() {

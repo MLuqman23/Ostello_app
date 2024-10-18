@@ -1,9 +1,13 @@
 class AssetsImages {
-  static const String search = 'assets/images/search-normal.png';
-  static const String drawer = 'assets/images/textalign-left.png';
-  static const String coin = 'assets/images/coin.png';
-  static const String schedule = 'assets/images/book.png';
-  static const String content = 'assets/images/calendar-2.png';
+  static const String signUp =
+      'assets/images/young couple sitting on the floor and reading books.png';
+  static const String mobile =
+      'assets/images/woman holding phone with white screen.png';
+  static const String handWithPhone =
+      'assets/images/3d-mobile-phone-with-security-code-padlock-Photoroom 1.png';
+  static const String appbar = 'assets/images/Group 7009.png';
+  static const String login =
+      'assets/images/3d-render-secure-login-password-illustration-Photoroom 1.png';
   static const String batches = 'assets/images/teacher.png';
   static const String card = 'assets/images/Rectangle 20072.png';
   static const String cardImage = 'assets/images/Rectangle 34624635.png';
