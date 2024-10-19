@@ -113,7 +113,7 @@ class ForgotPassword extends ConsumerWidget {
                     hintText: 'Enter mail or number...',
                     hintStyle: TextStyle(
                         fontSize: ResponsiveHelper.fontSize(12),
-                        color: Color.fromARGB(255, 182, 179, 179),
+                        color: const Color.fromARGB(255, 182, 179, 179),
                         fontWeight: FontWeight.w500)),
               ),
               SizedBox(
