@@ -18,6 +18,18 @@ class NavigationNotifier extends StateNotifier<void> {
     navigatorKey.currentState?.pushNamed('/Login');
   }
 
+  void goToForgotPassword() {
+    navigatorKey.currentState?.pushNamed('/ForgotPass');
+  }
+
+  void goToEmailScreen() {
+    navigatorKey.currentState?.pushNamed('/EmailScreen');
+  }
+
+  void goToEmailApp() {
+    navigatorKey.currentState?.pushNamed('/EmailApp');
+  }
+
   void goToAppNavigator() {
     navigatorKey.currentState?.pushNamed('/');
   }

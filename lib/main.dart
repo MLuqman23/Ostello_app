@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello/const/screen_size.dart';
+import 'package:ostello/presentation/email.dart';
+import 'package:ostello/presentation/email_app.dart';
+import 'package:ostello/presentation/forgot_password.dart';
 import 'package:ostello/presentation/login.dart';
 import 'package:ostello/presentation/otp.dart';
 import 'package:ostello/presentation/sign_up.dart';
@@ -31,6 +34,9 @@ class MyApp extends ConsumerWidget {
             '/SignupWithNumber': (context) => const SignupWIthNumber(),
             '/OtpScreen': (context) => OTPScreen(),
             '/Login': (context) => const Login(),
+            '/ForgotPass': (context) => const ForgotPassword(),
+            '/EmailScreen': (context) => const EmailScreen(),
+            '/EmailApp': (context) => const EmailApp(),
           },
         );
       },

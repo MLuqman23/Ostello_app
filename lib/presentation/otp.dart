@@ -15,7 +15,9 @@ class OTPScreen extends ConsumerWidget {
     final pinNotifier = ref.read(pinControllerProvider.notifier);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: Padding(
           padding: EdgeInsets.only(
               left: ResponsiveHelper.width(15),

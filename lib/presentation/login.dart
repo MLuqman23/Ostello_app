@@ -140,24 +140,32 @@ class Login extends ConsumerWidget {
                     height: ResponsiveHelper.height(15),
                   ),
                   Center(
-                    child: RichText(
-                      text: TextSpan(
-                          text: 'Forgot password? ',
-                          style: TextStyle(
-                            fontSize: ResponsiveHelper.fontSize(14),
-                            fontWeight: FontWeight.w800,
-                            color: const Color(0xff201926),
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'Resend in 18s',
-                              style: TextStyle(
-                                fontSize: ResponsiveHelper.fontSize(14),
-                                fontWeight: FontWeight.w800,
-                                color: const Color.fromARGB(255, 155, 61, 237),
-                              ),
-                            )
-                          ]),
+                    child: GestureDetector(
+                      onTap: () {
+                        ref
+                            .read(navigationProvider.notifier)
+                            .goToForgotPassword();
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'Forgot password? ',
+                            style: TextStyle(
+                              fontSize: ResponsiveHelper.fontSize(14),
+                              fontWeight: FontWeight.w800,
+                              color: const Color(0xff201926),
+                            ),
+                            children: [
+                              TextSpan(
+                                text: 'Resend in 18s',
+                                style: TextStyle(
+                                  fontSize: ResponsiveHelper.fontSize(14),
+                                  fontWeight: FontWeight.w800,
+                                  color:
+                                      const Color.fromARGB(255, 155, 61, 237),
+                                ),
+                              )
+                            ]),
+                      ),
                     ),
                   ),
                 ],
