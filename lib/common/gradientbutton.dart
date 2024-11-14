@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ostello/const/screen_size.dart';
 
 class Gradientbutton extends StatelessWidget {
   final String txt;
@@ -21,8 +20,8 @@ class Gradientbutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ResponsiveHelper.width(double.infinity),
-      height: ResponsiveHelper.height(49),
+      // width: ResponsiveHelper.width(double.infinity),
+      // height: ResponsiveHelper.height(49),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           gradient: const LinearGradient(colors: [

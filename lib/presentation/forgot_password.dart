@@ -106,6 +106,7 @@ class ForgotPassword extends ConsumerWidget {
                 ),
                 TextField(
                   obscureText: false,
+                  // maxLines: 2,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xffFCFCFC),
